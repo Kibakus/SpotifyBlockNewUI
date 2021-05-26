@@ -2,17 +2,6 @@ import os
 import os.path
 import shutil
 import re
-import requests
-import subprocess
-
-if "y" in input("Download BlockTheSpot script (Mrpond) (Y)es/(N)o\n").lower():
-    with open("temp.bat", "wb") as f:  # run skript BlockTheSpot (mrpond)
-        f.write(requests.get("https://raw.githubusercontent.com/mrpond/BlockTheSpot/master/BlockTheSpot.bat").content)
-    subprocess.Popen("temp.bat", stdin=subprocess.PIPE).communicate(input=b'\n')
-    os.remove("temp.bat")
-
-os.system("taskkill /F /IM Spotify.exe")  # close Spotify
-os.system("cls")
 
 
 PATH = os.getenv('APPDATA') + r"\Spotify\Apps"
@@ -22,6 +11,10 @@ bak = os.path.join(PATH, "xpui.bak")
 fzip = os.path.join(PATH, "xpui.zip")
 temp = os.path.join(PATH, "temp")
 js = os.path.join(temp, "xpui.js")
+bat = os.path.join(PATH, "temp.bat")
+
+#os.system("taskkill /F /IM Spotify.exe")  # close Spotify
+#os.system("cls")
 
 if os.path.exists(spa) is False:
     exit()
@@ -47,4 +40,3 @@ shutil.make_archive(xpui, 'zip', temp)
 shutil.rmtree(temp)
 shutil.move(fzip, spa)
 os.system(f"START {os.getenv('APPDATA')}\\Spotify\\Spotify.exe")
-
