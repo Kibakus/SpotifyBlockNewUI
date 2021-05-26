@@ -5,11 +5,11 @@ import re
 import requests
 import subprocess
 
-
-with open("temp.bat", "wb") as f:  # run skript BlockTheSpot (mrpond)
-    f.write(requests.get("https://raw.githubusercontent.com/mrpond/BlockTheSpot/master/BlockTheSpot.bat").content)
-subprocess.Popen("temp.bat", stdin=subprocess.PIPE).communicate(input=b'\n')
-os.remove("temp.bat")
+if "y" in input("Download BlockTheSpot script (Mrpond) (Y)es/(N)o\n").lower():
+    with open("temp.bat", "wb") as f:  # run skript BlockTheSpot (mrpond)
+        f.write(requests.get("https://raw.githubusercontent.com/mrpond/BlockTheSpot/master/BlockTheSpot.bat").content)
+    subprocess.Popen("temp.bat", stdin=subprocess.PIPE).communicate(input=b'\n')
+    os.remove("temp.bat")
 
 os.system("taskkill /F /IM Spotify.exe")  # close Spotify
 os.system("cls")
