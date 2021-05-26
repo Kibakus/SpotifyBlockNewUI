@@ -1,6 +1,4 @@
-import os
-import os.path
-import shutil
+import os, os.path, shutil, re
 
 PATH = os.getenv('APPDATA') + r"\Spotify\Apps"
 
@@ -21,7 +19,7 @@ shutil.move(spa, fzip)
 shutil.unpack_archive(fzip, temp, "zip")
 
 with open(js, "r", encoding="utf-8") as f:
-    jsdata = f.read().replace("&&i().createElement(hu,{onClick:C,className:yu.Z.UpgradeButton})", "").replace("e.ads.leaderboard.isEnabled", "e.ads.leaderboard.isDisabled")
+    jsdata = re.sub(r"&&.\(\)\.createElement\(.{2},{onClick:C,className:.{2}\.Z\.UpgradeButton}\)", "", f.read()).replace("e.ads.leaderboard.isEnabled", "e.ads.leaderboard.isDisabled")
 with open(js, "w+", encoding="utf-8") as f:
     f.write(jsdata)
 
