@@ -13,8 +13,6 @@ temp = os.path.join(PATH, "temp")
 js = os.path.join(temp, "xpui.js")
 bat = os.path.join(PATH, "temp.bat")
 
-#os.system("taskkill /F /IM Spotify.exe")  # close Spotify
-#os.system("cls")
 
 if os.path.exists(spa) is False:
     exit()
@@ -39,4 +37,3 @@ except IndexError:
 shutil.make_archive(xpui, 'zip', temp)
 shutil.rmtree(temp)
 shutil.move(fzip, spa)
-os.system(f"START {os.getenv('APPDATA')}\\Spotify\\Spotify.exe")
