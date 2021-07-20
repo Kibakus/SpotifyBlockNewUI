@@ -1,8 +1,6 @@
 # START
 
-Launcher.exe or Launcher.py (BlockTheSpot + SpotifyBlockNewUI)
-
-spotify.exe or spotify.py (only SpotifyBlockNewUI)
+RUN SpotifyBlockNewUI.bat
 
 # Before
 
